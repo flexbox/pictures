@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class PhotoCard extends Component {
+export default class PhotoDetails extends Component {
   render() {
     let { key, title, thumbnailUrl } = this.props
 

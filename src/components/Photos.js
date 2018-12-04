@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 import Loader from './Loader'
 import PhotoCard from './PhotoCard'
+import { Link } from 'react-router-dom'
+import Header from './Header'
+import PhotoDetails from './PhotoDetails'
 
 export default class Photos extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   state = {
     loading: true,
     data: [],
@@ -16,12 +14,12 @@ export default class Photos extends Component {
   }
 
   _fetch = () => {
-    axios
-      .get(`http://jsonplaceholder.typicode.com/photos?_limit=30`)
+    fetch(`http://jsonplaceholder.typicode.com/photos?_limit=30`)
+      .then(response => response.json())
       .then(response =>
         this.setState({
           loading: false,
-          data: response.data,
+          data: response,
         })
       )
       .catch(error =>
@@ -49,21 +47,16 @@ export default class Photos extends Component {
 
     return (
       <PhotosContainer>
-        <div>
-          <span role="img" aria-label="Wait">
-            📸{' '}
-          </span>
-          Photos{' '}
-        </div>
+        <Header />
         <PhotoGrid>
           {data.map(item => (
-            <PhotoCard
-              key={item.id}
-              albumId={item.albumId}
-              title={item.albumId}
-              url={item.albumId}
-              thumbnailUrl={item.albumId}
-            />
+            <Link to={`/${item.id}`} component={PhotoDetails}>
+              <PhotoCard
+                key={item.id}
+                title={item.title}
+                thumbnailUrl={item.thumbnailUrl}
+              />
+            </Link>
           ))}
         </PhotoGrid>
       </PhotosContainer>

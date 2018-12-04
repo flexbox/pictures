@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Photos from './components/Photos'
+// import Photo from './components/Photo'
 
 const Root = () => (
   <Router>
