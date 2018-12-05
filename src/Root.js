@@ -1,13 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Photos from './components/Photos'
-// import Photo from './components/Photo'
+import { BrowserRouter as Router } from 'react-router-dom'
+import App from './components/App'
 
 const Root = () => (
   <Router>
-    <Switch>
-      <Route exact path="/" component={Photos} />
-    </Switch>
+    <App />
   </Router>
 )
 

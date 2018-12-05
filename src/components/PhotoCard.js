@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
+import Image from './Image'
 
 export default class PhotoCard extends Component {
   render() {
-    let { key, title, thumbnailUrl } = this.props
+    let { id, title, thumbnailUrl } = this.props
 
-    return (
-      <>
-        <div>{key}</div>
-        <img src={thumbnailUrl} alt={title} />
-      </>
-    )
+    if (id % 2 === 1) {
+      return <Image src={thumbnailUrl} alt={title} rounded />
+    }
+
+    return <Image src={thumbnailUrl} alt={title} circle />
   }
 }
